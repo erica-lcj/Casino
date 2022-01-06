@@ -1,9 +1,14 @@
+# Normal dice - call roll() to roll, graph shows simulation of 100 rolls.
 
 die <- 1:6
-roll <- function(roll) {sample(x=die,size=2,replace=TRUE)}
-replicate(10, roll())
+roll <- function(roll) {
+sample(x=die,size=2,replace=TRUE)
+}
 qplot(x=replicate(100,roll()),binwidth=0.5)
 
-wroll <- function(wroll) {sample(x=die,size=5,replace=TRUE,prob=c(0.5/6, 1/6,1/6,1/6,1/6,4/6))}
-qplot(x=replicate(100000,wroll()),binwidth=0.5)
+# Biased dice - called wroll() to roll, graph shows simulation of 100000 rolls. Clear bias towards 6.
 
+wroll <- function(wroll) {
+sample(x=die,size=5,replace=TRUE,prob=c(0.5/6, 1/6,1/6,1/6,1/6,4/6))
+}
+qplot(x=replicate(100000,wroll()),binwidth=0.5)
